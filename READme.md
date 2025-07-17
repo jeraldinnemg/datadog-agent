@@ -105,6 +105,6 @@ ansible-playbook -i ansible/inventory ansible/datadog.yml --ask-vault-pass
 - Windows Manager
 ![windows](images/windows-manager.png)
 - Datadog Metrics Monitoring Machine: 52.91.216.1 
-![datadog](images/windows-manager.png) Machine: 52.44.139.186 
-- Datadog Metrics Monitoring
-![datadog](images/windows-manager.png)
+![datadog](images/datadog-ec2-dashboard.png) 
+- Datadog Metrics Monitoring Machine: 52.44.139.186 
+![datadog](images/datadog-ec2-metrics.png)
