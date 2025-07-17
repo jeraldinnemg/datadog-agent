@@ -1,0 +1,22 @@
+- name: Install Datadog Agent on Windows
+  hosts: windows
+  gather_facts: yes
+
+  vars:
+    datadog_site: "us5.datadoghq.com"
+    datadog_api_key: "{{ datadog_api_key }}"
+    datadog_config:
+      logs_enabled: true
+      apm_config:
+        enabled: true
+      process_config:
+        enabled: true
+
+  tasks:
+    - name: Install or update Datadog Agent
+      import_role:
+        name: datadog.datadog
+      vars:
+        datadog_windows_enabled: true
+      tags:
+        - env.dev
