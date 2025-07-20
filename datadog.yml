@@ -6,6 +6,9 @@
     datadog_site: "us5.datadoghq.com"
     datadog_api_key: "{{ datadog_api_key }}"
     datadog_config:
+      tags:
+        - env:dev
+        - os:windows
       logs_enabled: true
       apm_config:
         enabled: true

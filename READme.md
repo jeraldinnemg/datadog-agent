@@ -65,20 +65,16 @@ WinRM HTTPS: TCP/5986 (recommended)
 ## Enable WinRM
 On each Windows host, open PowerShell as Administrator and run:
 ```
+Enable-PSRemoting -force
 winrm quickconfig -q
 winrm set winrm/config/service '@{AllowUnencrypted="true"}'
 winrm set winrm/config/service/auth '@{Basic="true"}'
+Start-Service WinRM
 ```
 
 # Enable HTTPS & firewall
 ```
-New-NetFirewallRule -Name "WinRM_HTTPS" `
-  -DisplayName "WinRM over HTTPS" `
-  -Enabled True `
-  -Direction Inbound `
-  -Protocol TCP `
-  -LocalPort 5986 `
-  -Action Allow
+New-NetFirewallRule -Name "WinRM_HTTP" -DisplayName "WinRM over HTTP" -Enabled True -Direction Inbound -Protocol TCP -LocalPort 5985 -Action Allow
 ```
 
 ## Test Connectivity
@@ -104,7 +100,9 @@ ansible-playbook -i ansible/inventory ansible/datadog.yml --ask-vault-pass
 ![aws](images/ec2-instances.png)
 - Windows Manager
 ![windows](images/windows-manager.png)
-- Datadog Metrics Monitoring Machine: 52.91.216.1 
-![datadog](images/datadog-ec2-dashboard.png) 
-- Datadog Metrics Monitoring Machine: 52.44.139.186 
-![datadog](images/datadog-ec2-metrics.png)
+- Test Connectivity
+![test](images/test-connectivity.png)
+- Datadog Host Map
+![hosts](images/hosts-tagged.png)
+- Datadog Dashboard
+![datadog](images/dashboard.png) 
